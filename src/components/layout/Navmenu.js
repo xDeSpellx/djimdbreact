@@ -10,8 +10,8 @@ class Navmenu extends React.Component{
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
-                            <Nav.Link href="#home">Movies</Nav.Link>
-                            <Nav.Link href="#link">Users</Nav.Link>
+                            <Nav.Link><Link to="/movies">Movies</Link></Nav.Link>
+                            <Nav.Link><Link to="/users">Users</Link></Nav.Link>
                             <NavDropdown title="Actions" id="basic-nav-dropdown">
                                 <NavDropdown.Item><Link to="/contact">Contact</Link></NavDropdown.Item>
                                 <NavDropdown.Item><Link to="/about">About</Link></NavDropdown.Item>
