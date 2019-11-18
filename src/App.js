@@ -8,6 +8,7 @@ import Contact from './components/contact/contact';
 import Tos from './components/tos/Tos';
 import Users from './components/users/Users';
 import Movies from './components/movies/movies';
+import Notfound from './components/404/404';
 
 class App extends React.Component {
   render() {
@@ -22,6 +23,7 @@ class App extends React.Component {
               <Route path="/tos" exact component={Tos} />
               <Route path="/users" exact component={Users} />
               <Route path="/movies" exact component={Movies} />
+              <Route component={Notfound} />
             </Switch>            
           </Layout>
         </div>

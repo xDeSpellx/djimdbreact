@@ -6,7 +6,7 @@ import './layout.css';
 class Footer extends React.Component {
     render() {
         return (
-            <Jumbotron fluid style={{ backgroundColor: "#242729" }}>
+            <Jumbotron className="footer-jmp" fluid style={{ backgroundColor: "#242729" }}>
                 <Container>
                     <Row>
                         <Col>
