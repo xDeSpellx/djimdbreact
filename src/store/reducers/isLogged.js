@@ -8,22 +8,21 @@ const initialState = {
 
 const loggedReducer = ( state = initialState,action) =>{    
     switch(action.type){
-            case 'LOGIN':
-                    axios({
-                        method: 'post',
-                        url: 'https://djimdb.herokuapp.com/auth/',
-                        data: {username:action.payload.username,password:action.payload.password},                        
-                        })
-                        .then(function (response) {                                                        
-                            // console.log(response.data.token)
-                           
-                            return Object.assign({}, state, { isLoggedIn: true})                                                                                       
-                        })
-                        .catch(function (response) {
-                            //handle error
-                            console.log(response);
-                        });
-            return state;
+            case 'LOGINSUCCESS':
+                console.log('success')
+                break
+            case 'LOGIN':                                       
+            axios.post('https://djimdb.herokuapp.com/auth/', {
+                        username:action.payload.username,
+                        password:action.payload.password
+                      })
+                      .then( data => {
+                           this.props.dispatch({type:'LOGINSUCCESS',payload:data})                    
+                      })
+                      .catch(function (error) {
+                        console.log(error);
+                      });  
+                      break
         case 'LOGOUT':
             return Object.assign({}, state, { isLoggedIn: false});            
         default:           
