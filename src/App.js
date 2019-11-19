@@ -10,13 +10,12 @@ import Users from './components/users/Users';
 import Movies from './components/movies/movies';
 import Notfound from './components/404/404';
 
-
-class App extends React.Component {
+class App extends React.Component {    
   render() {
     return (
       <BrowserRouter>
-        <div className="App">   
-          <Layout>
+        <div className="App">             
+          <Layout>          
             <Switch>
               <Route path="/" exact component={Home} />
               <Route path="/about" exact component={About} />
@@ -25,7 +24,7 @@ class App extends React.Component {
               <Route path="/users" exact component={Users} />
               <Route path="/movies" exact component={Movies} />
               <Route component={Notfound} />
-            </Switch>            
+            </Switch>                        
           </Layout>
         </div>
       </BrowserRouter>
