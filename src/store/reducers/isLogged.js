@@ -2,24 +2,27 @@ import axios from 'axios';
 
 const initialState = {
     isLoggedIn:false,
-    loggedInUsername:null
+    loggedInUsername:null,
+    token:null
 }
 
 const loggedReducer = ( state = initialState,action) =>{    
     switch(action.type){
-            case 'LOGIN': 
-            console.log(action.payload.username)            
-            console.log(action.payload.password)            
-            axios.post('https://djimdb.herokuapp.com/auth/', {
-                firstName: 'admin',
-                lastName: 'Patata2378/*-'
-          })
-          .then(function (response) {
-            return Object.assign({}, state, { isLoggedIn: true });
-          })
-          .catch(function (error) {            
-            return Object.assign({}, state, { loggedInUsername: true });
-          });
+            case 'LOGIN':
+                    axios({
+                        method: 'post',
+                        url: 'https://djimdb.herokuapp.com/auth/',
+                        data: {username:action.payload.username,password:action.payload.password},                        
+                        })
+                        .then(function (response) {                                                        
+                            // console.log(response.data.token)
+                           
+                            return Object.assign({}, state, { isLoggedIn: true})                                                                                       
+                        })
+                        .catch(function (response) {
+                            //handle error
+                            console.log(response);
+                        });
             return state;
         case 'LOGOUT':
             return Object.assign({}, state, { isLoggedIn: false});            
