@@ -5,7 +5,8 @@ const initialState = {
     token:null,
     errorMessage:false,
     user:null,
-    movies:null
+    movies:null,
+    moviesLoading: false
 }
 
 const loggedReducer = ( state = initialState,action) =>{    
@@ -17,12 +18,14 @@ const loggedReducer = ( state = initialState,action) =>{
             case 'FAILLOGIN':                
                 return Object.assign({}, state, { isLoggedIn: false,wait:false,errorMessage:true }); 
             case 'LOGOUT' :
-                return Object.assign({}, state, { isLoggedIn: false }); 
+                return Object.assign({}, state, { isLoggedIn: false,movies:null }); 
             case 'CLOSEMSG' :
                 return Object.assign({}, state, { errorMessage: false }); 
-            case 'FETCHEDMOVIES':
-                console.log(action.data)
-                return Object.assign({}, state, { movies: action.data }); 
+            case 'FETCHINGMOVIES':
+                console.log('start fetching')
+                return Object.assign({}, state, { moviesLoading: true }); 
+            case 'FETCHEDMOVIES':                
+                return Object.assign({}, state, { movies: action.data,moviesLoading: false }); 
         default:           
             return state;
     }

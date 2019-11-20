@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form,Button } from 'react-bootstrap';
+import './contact.css';
 
 class Contact extends React.Component {
     render() {

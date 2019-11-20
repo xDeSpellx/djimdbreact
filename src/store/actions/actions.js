@@ -31,8 +31,8 @@ export function fetchMovies(token){
         dispatch({ type: 'FETCHINGMOVIES' });
         
         axios.get('https://djimdb.herokuapp.com/api/movies/',{headers:{Authorization:'Token '+token}})   
-        .then((response) =>{
-            dispatch({type: 'FETCHEDMOVIES',data:response.data});
+        .then((response) =>{            
+            dispatch({type: 'FETCHEDMOVIES',data:response.data});            
         })
         .catch((error)=> {
             dispatch({type: 'FAILEDFETCH' });
