@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Layout from './components/layout/Layout'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import {  Switch, Route } from 'react-router-dom'
 import Home from './components/home/home';
 import About from './components/about/about';
 import Contact from './components/contact/contact';
@@ -13,7 +13,6 @@ import Notfound from './components/404/404';
 class App extends React.Component {    
   render() {
     return (
-      <BrowserRouter>
         <div className="App">             
           <Layout>          
             <Switch>
@@ -26,8 +25,7 @@ class App extends React.Component {
               <Route component={Notfound} />
             </Switch>                        
           </Layout>
-        </div>
-      </BrowserRouter>
+        </div>      
     );
   }
 }
