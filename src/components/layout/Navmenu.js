@@ -2,6 +2,7 @@ import React from 'react';
 import { Navbar, Form, NavDropdown, FormControl, Button, Nav } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
+import {login,logout} from '../../store/actions/actions'
 
 class Navmenu extends React.Component{  
     
@@ -14,17 +15,14 @@ class Navmenu extends React.Component{
     }
 
     login = ()=>{
-        this.props.dispatch({
-            type: 'LOGIN',
-            payload: {username:this.state.username, password:this.state.password}
-        });        
-    }
+        this.props.login(this.state.username, this.state.password)
+    }    
     
     render(){
         let logInPanel = null;
 
         if(this.props.isLogged){            
-            logInPanel=(<Button variant="outline-success" onClick={this.props.logOut} >Logout</Button>);
+            logInPanel=(<Button variant="outline-success" onClick={this.props.logout} >Logout</Button>);
         }
         else{
             logInPanel=(<Form inline>
@@ -61,4 +59,11 @@ const mapStateToProps = state =>{
     }
 }
 
-export default connect(mapStateToProps)(Navmenu);
+const mapDispatchToProps = dispatch =>{
+    return{
+        login: (username, password) => dispatch(login(username, password)),
+        logout: () => dispatch(logout())
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Navmenu);
