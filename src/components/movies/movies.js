@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/actions'
 import { Spinner } from 'react-bootstrap';
+import MovieList from '../movies/movieList';
+import './movies.css';
 
 class Movies extends React.Component{
    componentDidUpdate(prevProps) {
@@ -25,7 +27,7 @@ class Movies extends React.Component{
         let moviesSpinner = null;
 
         if (this.props.movieList !=null){
-            movieLST = this.props.movieList.map( (movie) => <li key={movie.id}>{movie.title}</li> )
+            movieLST = this.props.movieList.map( (movie) => <MovieList title={movie.title} description={movie.description}/>)
         }    
         
         if (this.props.moviesLoading){
@@ -34,8 +36,8 @@ class Movies extends React.Component{
         
         return(
             <div>
-                <h1>Movies Page</h1> 
-                     {movieLST}   
+                <h1 style={{marginBottom:"70px"}}>Movies Page</h1> 
+                     <div className="encMV">{movieLST}   </div>
                      {moviesSpinner}
             <p></p>
             </div>
